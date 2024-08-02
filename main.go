@@ -9,7 +9,7 @@ func describe(i interface{}) {
 }
 
 func main() {
-	s := "Hello World"
+	s := "Hello World ori"
 	describe(s)
 	i := 55
 	describe(i)
