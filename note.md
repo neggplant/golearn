@@ -181,9 +181,25 @@ func main() {
 // String: Hello World
 // Bytes: 48 65 6c 6c 6f 20 57 6f 72 6c 64  
 ```
-
+<!-- 接口 -->
 ```go
+// 接口可以当任意类型
+func describe(i interface{}) {
+	fmt.Printf("Type = %T, value = %v\n", i, i)
+}
 
+func main() {
+	s := "Hello World"
+	describe(s)
+	i := 55
+	describe(i)
+	strt := struct {
+		name string
+	}{
+		name: "Naveen R",
+	}
+	describe(strt)
+}
 ```
 
 ```go

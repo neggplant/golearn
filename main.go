@@ -4,13 +4,19 @@ import (
 	"fmt"
 )
 
-func dd(a map[string]int) {
-	a["fddf"] = 3334
+func describe(i interface{}) {
+	fmt.Printf("Type = %T, value = %v\n", i, i)
 }
 
 func main() {
-	b := 255
-	var a *int = &b
-	fmt.Printf("Type of a is %T\n", a)
-	fmt.Println("address of b is", a)
+	s := "Hello World"
+	describe(s)
+	i := 55
+	describe(i)
+	strt := struct {
+		name string
+	}{
+		name: "Naveen R",
+	}
+	describe(strt)
 }
