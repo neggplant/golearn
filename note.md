@@ -203,7 +203,29 @@ func main() {
 ```
 
 ```go
+import (
+	"fmt"
+	"sync"
+)
 
+func hello(wg *sync.WaitGroup, a int) {
+	defer wg.Done()
+	fmt.Printf("Hello world %d\n", a)
+}
+
+func main() {
+	var wg sync.WaitGroup
+	for i := 0; i < 10; i++ {
+		wg.Add(1)
+		go hello(&wg, i)
+	}
+	fmt.Println("main function")
+	wg.Wait()
+}
+// sync.WaitGroup：
+// sync.WaitGroup用于等待一组Goroutine完成。我们在启动每个Goroutine之前调用wg.Add(1)，表示我们有一个新的Goroutine需要等待。
+// 在hello函数中，使用defer wg.Done()表示这个Goroutine完成时会调用wg.Done()，减少WaitGroup的计数。
+// 在main函数中，调用wg.Wait()等待所有Goroutine完成。
 ```
 
 ```go
